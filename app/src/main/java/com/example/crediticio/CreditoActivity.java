@@ -14,11 +14,14 @@ import android.widget.Toast;
 
 public class CreditoActivity extends AppCompatActivity {
 
+    //1. Se les da nombre a las variables Java
     EditText jetIdentificacion, jetcodigoPrestamo;
     TextView jtvusuario, jtvprofesion, jtvsalario, jtvingresoExtra, jtvgastos, jtvvalorPrestamo;
     Button jbtBuscar, jbtejecutar, jbtguardar, jbtconsultar, jbtanular, jbtregresar, jbtcancelar;
-    //Instanciar la clase que heredo de la clase SqliteOpenHelper
+
+    //2. Instanciar la clase que heredo de la clase SqliteOpenHelper
     ClsOpenHelper admin=new ClsOpenHelper(this,"Banco.bd",null,1);
+    //3. 101
     String Identificacion;
     byte sw;
     int ingresos, salario, gastos, valorBruto, valorPrestamo;
@@ -28,8 +31,9 @@ public class CreditoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_credito);
-        //para ocultar el titulo
+        //1. para ocultar el titulo
         getSupportActionBar().hide();
+        //2. Para enlazar los objetos java con los XML
         //EditText
         jetIdentificacion=findViewById(R.id.etIdentificacion);
         jetcodigoPrestamo=findViewById(R.id.etcodigoPrestamo);
@@ -54,7 +58,7 @@ public class CreditoActivity extends AppCompatActivity {
         startActivity(intmenu);
     }
 
-    public void Cancelar(View view){
+    public void botonCancelar(View view){
         Limpiar_campos();
     }
 
@@ -105,14 +109,19 @@ public class CreditoActivity extends AppCompatActivity {
             jetIdentificacion.requestFocus();
         }
         else {
-            //jtvingresoExtra se pasa de String a Int
+            //las variables se pasan de String a Int
             ingresos=Integer.parseInt(jtvingresoExtra.getText().toString());
             gastos=Integer.parseInt(jtvgastos.getText().toString());
             salario=Integer.parseInt(jtvsalario.getText().toString());
+            //Operaciones para el resultado
             valorBruto=ingresos+salario-gastos;
             valorPrestamo=valorBruto*10;
             //se muestra en pantalla el valor del prestamos como un string
             jtvvalorPrestamo.setText(String.valueOf(valorPrestamo));
         }
+    }
+
+    public void botonGuardar(View view){
+
     }
 }

@@ -223,6 +223,7 @@
         android:layout_marginRight="20dp"
         android:layout_gravity="center"
         android:text="cancelar"
+        android:onClick="botonCancelar"
         android:textSize="23dp" />
 
 </LinearLayout>
